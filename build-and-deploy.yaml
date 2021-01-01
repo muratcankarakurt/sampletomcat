@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+    - name: docker
+      image: docker
+      command:
+        - cat
+      tty: true
+      privileged: true
+      volumeMounts:
+        - name: dockersock
+          mountPath: /var/run/docker.sock
+    - name: helm
+      image: alpine/helm
+      command:
+        - cat
+      tty: true
+  volumes:
+    - name: dockersock
+      hostPath:
+        path: /var/run/docker.sock
