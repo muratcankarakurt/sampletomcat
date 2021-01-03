@@ -28,7 +28,7 @@ Enter a description in the prompted screen and click create.
 ### Creating a Github SSH Key
 ```console
 # Generate SSH Keys
--$ ssh-keygen -t rsa -f keyfile
+ssh-keygen -t rsa -f keyfile
 ```
 Paste the content of keyfile.pub in the [menu](https://github.com/settings/ssh/new)
 
