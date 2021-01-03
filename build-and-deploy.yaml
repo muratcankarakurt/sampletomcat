@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 spec:
-  serviceAccountName: jenkins
+  serviceAccountName: helm
   containers:
     - name: docker
       image: docker
