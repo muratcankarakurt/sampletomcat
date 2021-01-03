@@ -26,6 +26,40 @@ Account Settings -> Security -> New Access Token
 Enter a description in the prompted screen and click create.
 ```
 ### Creating a Github SSH Key
+```console
+# Generate SSH Keys
+-$ ssh-keygen -t rsa -f keyfile
 ```
-Click here to open the [menu](https://github.com/settings/ssh/new)
+Paste the content of keyfile.pub in the [menu](https://github.com/settings/ssh/new)
+
+## Jenkins Configurations
 ```
+Dashboard -> Manage Jenkins -> Manage Credentials -> Jenkins -> Global -> Add Credentials
+```
+
+| Key    | Value                           | 
+| -------| --------------------------------|
+| Kind   | Secret text                     | 
+| Scope  | Global                          | 
+| Secret | -docker hub secret you created- | 
+| ID     | eks-dockerhub-secret            | 
+
+| Key         | Value                          | 
+| ------------| -------------------------------|
+| Kind        | SSH Username with private key  | 
+| Scope       | Global                         | 
+| ID          | tomcat-sample-github-key       | 
+| Private Key | -use the generated keyfile-    | 
+
+
+```
+Dashboard -> New Item -> Multibranch Pipeline
+Give a name to the pipeline. Click Save.
+```
+| Key                     | Value                                                  | 
+| ------------            | -------------------------------                        |
+| Branch Sources          | Git                                                    | 
+| Project Repository      | git@github.com:muratcankarakurt/sampletomcat.git (SSH) | 
+| Behaviours              | Discover branches.                                     | 
+| Behaviours (Add)        | Filter by name (with wildcards) / Include: master      | 
+
