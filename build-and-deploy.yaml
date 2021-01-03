@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Pod
 spec:
+  serviceAccountName: jenkins
   containers:
     - name: docker
       image: docker
@@ -16,13 +17,7 @@ spec:
       command:
         - cat
       tty: true
-      volumeMounts:
-        - name: jenkins-token
-          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
   volumes:
     - name: dockersock
       hostPath:
         path: /var/run/docker.sock
-    - name: jenkins-token
-      secret:
-        secretName: jenkins
