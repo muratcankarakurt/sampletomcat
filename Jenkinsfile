@@ -19,8 +19,8 @@ pipeline {
                 container("docker") {
                     sh """
                         docker login -u $docker_user -p $docker_credentials
-                        docker build -t $docker_user/$docker_repo .
-                        docker push $docker_user/$docker_repo
+                        docker build -t $docker_user/$docker_repo:$app_version .
+                        docker push $docker_user/$docker_repo:$app_version
                     """
                 }
             }
