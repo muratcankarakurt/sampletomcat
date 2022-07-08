@@ -2,9 +2,7 @@
 # Build a Docker image
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-pool:
-  name: Default
-  demands: githubbuilds
+pool: Default
 
 trigger:
 - master
