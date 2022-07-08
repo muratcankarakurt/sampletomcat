@@ -4,6 +4,7 @@
 
 pool:
   name: Default
+  demands: githubbuilds
 
 trigger:
 - master
