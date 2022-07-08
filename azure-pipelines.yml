@@ -2,6 +2,9 @@
 # Build a Docker image
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
+pool:
+  name: 'Default'
+
 trigger:
 - master
 
@@ -27,3 +30,10 @@ stages:
         dockerfile: 'Dockerfile'
         tags: |
           $(tag)
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          # Write your commands here
+          
+          echo 'Hello world'
